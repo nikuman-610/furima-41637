@@ -17,22 +17,21 @@
 ### Association
  - has_many :items
  - has_many :purchase_records
- - belongs_to_active_hash :birthday
 
 ## itemsテーブル
 
-| Column       | Type       | Options     |
-|--------------|------------|-------------|
-| id           | integer    | null: false, unique: true |
-| user         | references | null: false, foreign_key: true |
-| item_name    | string     | null: false |
-| summary      | text       | null: false |
-| price        | integer    | null: false |
-| category_id  | integer    | null: false |
-| condition_id | integer    | null: false |
-| charge_id    | integer    | null: false |
-| prefecture   | integer    | null: false |
-| date_id      | integer    | null: false |
+| Column        | Type       | Options     |
+|---------------|------------|-------------|
+| id            | integer    | null: false, unique: true |
+| user          | references | null: false, foreign_key: true |
+| item_name     | string     | null: false |
+| summary       | text       | null: false |
+| price         | integer    | null: false |
+| category_id   | integer    | null: false |
+| condition_id  | integer    | null: false |
+| charge_id     | integer    | null: false |
+| prefecture_id | integer    | null: false |
+| date_id       | integer    | null: false |
 
 ### Association
  - belongs_to :user
@@ -40,7 +39,7 @@
  - belongs_to_active_hash :category_id
  - belongs_to_active_hash :condition_id
  - belongs_to_active_hash :charge_id
- - belongs_to_active_hash :prefecture
+ - belongs_to_active_hash :prefecture_id
  - belongs_to_active_hash :date_id
 
 ## purchase_recordsテーブル
@@ -63,7 +62,7 @@
 | id              | integer    | null: false, unique: true |
 | purchase_record | references | null: false, foreign_key: true |
 | postal_code     | string     | null: false |
-| prefecture      | integer    | null: false |
+| prefecture_id   | integer    | null: false |
 | city            | string     | null: false |
 | house_number    | string     | null: false |
 | building_name   | string     |             |
@@ -71,4 +70,4 @@
 
 ### Association
  - belongs_to :purchase_record
- - belongs_to_active_hash :prefecture
+ - belongs_to_active_hash :prefecture_id
