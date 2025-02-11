@@ -83,6 +83,23 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
 
+      it 'パスワードが英字のみでは登録できない' do
+        @user.password = 'testsample'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
+
+      it 'パスワードが数字のみでは登録できない' do
+        @user.password = '114514'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
+      it 'パスワードに全角文字が含まれていると登録できない' do
+        @user.password = 'jdy78あ'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
+
       it '重複したemailが存在する場合は登録できない' do
         @user.save
         second_user = FactoryBot.build(:user)
