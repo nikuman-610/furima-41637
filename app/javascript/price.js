@@ -2,10 +2,11 @@ const price = () => {
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("input", () => {
     const inputPrice = priceInput.value;
+    const tax = Math.floor(inputPrice * 0.1);
     const addTaxDom = document.getElementById("add-tax-price");
-    addTaxDom.innerHTML = Math.floor(inputPrice * 0.1);
+    addTaxDom.innerHTML = tax;
     const addProfit = document.getElementById("profit");
-    addProfit.innerHTML = Math.floor(inputPrice * 0.9);
+    addProfit.innerHTML = inputPrice - tax;
   });
 };
 
