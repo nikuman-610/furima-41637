@@ -10,7 +10,6 @@ class Item < ApplicationRecord
   belongs_to :prefecture
 
   with_options presence: true do
-    validates :user_id
     validates :image
     validates :item_name, length: { maximum: 40, message: '商品名は40字までです' }
     validates :summary, length: { maximum: 1000, message: '商品の説明は1000字までです' }
