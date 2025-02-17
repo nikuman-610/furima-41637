@@ -3,11 +3,11 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :charge
-  belongs_to :days
-  belongs_to :prefecture
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :charge
+  belongs_to_active_hash :days
+  belongs_to_active_hash :prefecture
 
   with_options presence: true do
     validates :image
