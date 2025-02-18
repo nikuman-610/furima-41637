@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
   belongs_to_active_hash :charge
-  belongs_to_active_hash :days
+  belongs_to_active_hash :days, foreign_key: 'date_id'
   belongs_to_active_hash :prefecture
 
   with_options presence: true do
