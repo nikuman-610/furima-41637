@@ -6,5 +6,6 @@ FactoryBot.define do
     house_number { '1-1' }  # より確実な値に変更
     building_name { '東京ビル' }  # より確実な値に変更
     phone_number { '09012345678' }
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end

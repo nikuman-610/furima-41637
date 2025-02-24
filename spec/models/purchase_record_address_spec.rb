@@ -49,6 +49,11 @@ RSpec.describe PurchaseRecordAddress, type: :model do
         @purchase_record_address.valid?
         expect(@purchase_record_address.errors.full_messages).to include("Phone number can't be blank")
       end
+      it 'トークンが空だと保存できない' do
+        @purchase_record_address.token = nil
+        @purchase_record_address.valid?
+        expect(@purchase_record_address.errors.full_messages).to include("Token can't be blank")
+      end
       it '郵便番号はハイフンが含まれていないと保存できない' do
         @purchase_record_address.postal_code = '1234567'
         @purchase_record_address.valid?
@@ -91,6 +96,11 @@ RSpec.describe PurchaseRecordAddress, type: :model do
       end
       it '電話番号は、全角数字が含まれていると保存できない' do
         @purchase_record_address.phone_number = '18377３42335'
+        @purchase_record_address.valid?
+        expect(@purchase_record_address.errors.full_messages).to include("Phone number is invalid. Input only number with 10 to 11 digits")
+      end
+      it '電話番号は、ハイフンが含まれていると保存できない' do
+        @purchase_record_address.phone_number = '183-7743-2335'
         @purchase_record_address.valid?
         expect(@purchase_record_address.errors.full_messages).to include("Phone number is invalid. Input only number with 10 to 11 digits")
       end
