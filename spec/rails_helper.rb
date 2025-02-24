@@ -38,7 +38,12 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  
+  config.around(:each) do |example|
+    ActiveRecord::Base.connection_pool.disconnect!
+    example.run
+    ActiveRecord::Base.connection_pool.clear_reloadable_connections!
+  end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
